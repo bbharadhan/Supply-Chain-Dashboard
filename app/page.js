@@ -73,6 +73,11 @@ export default function Home() {
             refreshKey={chartData?.length || 0}
           />
 
+          <div>
+            <span className="ml-7 font-bold">Notes:</span> &nbsp;
+            <span>Have included addition of items using ADD button and delete an item using DELETE icon in Action column</span>
+          </div>
+
           <Add
             open={openAdd}
             setOpen={setOpenAdd}

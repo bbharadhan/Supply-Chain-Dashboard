@@ -47,7 +47,10 @@ export default function InventoryBarChart({ data }) {
                 height={60}
                 tick={<CustomTick />}
               />
-              <YAxis />
+              <YAxis 
+                domain={[0, "auto"]}
+                tickCount={11}
+              />
               <Tooltip
                 contentStyle={{
                   borderRadius: "8px",
