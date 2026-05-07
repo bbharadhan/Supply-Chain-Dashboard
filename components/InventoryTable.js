@@ -22,13 +22,17 @@ export default function InventoryTable({filters, refreshCharts, refreshKey}) {
     if (filters.search)
       query.append("search", filters.search);
 
-    if (filters.category)
-      query.append("category", filters.category);
+    if (filters.category.length > 0)
+      query.append("category", filters.category.join(","));
 
-    if (filters.status)
-      query.append("status", filters.status);
+    if (filters.status.length > 0)
+      query.append("status", filters.status.join(","));
 
     const res = await fetch(`/api/inventory?${query.toString()}`);
+    if (!res.ok) {
+      console.error("API Failed");
+      return;
+    }
     const result = await res.json();
     setData(result);
   };

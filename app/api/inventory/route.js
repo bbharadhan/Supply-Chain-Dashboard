@@ -8,11 +8,14 @@ export async function GET(request) {
     const status = searchParams.get('status');
     const search = searchParams.get('search');
 
+    const categoryArray = category ? category.split(",") : [];
+    const statusArray = status ? status.split(",") : [];
+
     let items = [...data]
 
-    if (category) {
-        items = items.filter(
-            (item) => item.category.toLowerCase() === category.toLowerCase()
+    if (categoryArray.length > 0) {
+        items = items.filter((item) =>
+            categoryArray.includes(item.category)
         );
     }
 
@@ -26,8 +29,10 @@ export async function GET(request) {
         return 'In Stock';
     }
 
-    if (status) {
-        items = items.filter((item) => getStatus(item) === status);
+    if (statusArray.length > 0) {
+        items = items.filter((item) =>
+            statusArray.includes(getStatus(item))
+        );
     }
     return NextResponse.json(items);
 }

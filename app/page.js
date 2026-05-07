@@ -12,8 +12,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 export default function Home() {
   const [filters, setFilters] = useState({
     search: "",
-    category: "",
-    status: "",
+    category: [],
+    status: [],
   });
 
   const [chartData, setChartData] = useState([]);
@@ -89,11 +89,6 @@ export default function Home() {
           <InventoryChart data={chartData} />
           <InventoryBarChart data={chartData} />
         </TabsContent>
-
-        <div>
-          <span className="ml-7 font-bold">Notes:</span> &nbsp;
-          <span>Have included addition of items using ADD button and delete an item using DELETE icon in Action column</span>
-        </div>
       </Tabs>
     </main>
   );
